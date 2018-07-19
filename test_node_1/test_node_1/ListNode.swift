@@ -46,9 +46,18 @@ class ListNode: NSObject  {
 //
 //        Solution.reverseList(head: nodes.head!).printList()
 //        print("------------")
+        print("new list after reverse")
+        Solution.reverseList(head: nodes.head!).head?.printForward()
+        print("original list:")
+        nodes.head?.printForward()
         
-        Solution.reverseList2(head: nodes.head!)?.printForward()
         print("->>>>>>>>>>>>")
+        print("new list after reverse2")
+        Solution.reverseList2(head: nodes.head!)?.printForward()
+        print("original list:")
+        nodes.head?.printForward()
+        print("original print:")
+        nodes.printList()
     }
 };
 
@@ -130,7 +139,7 @@ class Solution {
         return list
     }
 
-    class func reverseList2(head:ListNode?) -> ListNode?{
+    class func reverseList2(head:ListNode) -> ListNode?{
         
         var head_old:ListNode? = head
         var head_new:ListNode?
@@ -139,7 +148,7 @@ class Solution {
             
             let next = head_old!.next
             
-            head_old?.next = head_new
+            head_old?.next = head_new   //会导致head.next跟着变
             head_new = head_old
             head_old = next
         }
