@@ -16,6 +16,15 @@ class ListNode: NSObject  {
         self.next = nil
     }
     
+    func printForward() {
+        
+        var tmp_head:ListNode? = self
+        while tmp_head != nil {
+            print("->\(tmp_head!.val)")
+            tmp_head = tmp_head?.next
+        }
+    }
+    
     class func test1() {
         
         let nodes = List()
@@ -32,10 +41,14 @@ class ListNode: NSObject  {
         nodes.printList()
         print("------------")
         
-        nodes.reverse().printList()
-        print("------------")
+//        nodes.reverse().printList()
+//        print("------------")
+//
+//        Solution.reverseList(head: nodes.head!).printList()
+//        print("------------")
         
-        Solution.reverseList(head: nodes.head!).printList()
+        Solution.reverseList2(head: nodes.head!)?.printForward()
+        print("->>>>>>>>>>>>")
     }
 };
 
@@ -117,5 +130,21 @@ class Solution {
         return list
     }
 
+    class func reverseList2(head:ListNode?) -> ListNode?{
+        
+        var head_old:ListNode? = head
+        var head_new:ListNode?
+        
+        while head_old != nil {
+            
+            let next = head_old!.next
+            
+            head_old?.next = head_new
+            head_new = head_old
+            head_old = next
+        }
+        
+        return head_new
+    }
 }
 
