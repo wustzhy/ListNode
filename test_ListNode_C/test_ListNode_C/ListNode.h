@@ -4,7 +4,7 @@
 //
 //  Created by yestin on 2018/7/26.
 //  Copyright © 2018年 MingTian. All rights reserved.
-//  
+//
 //https://yq.aliyun.com/articles/27040?spm=5176.10695662.1996646101.searchclickresult.157cb7d60MW6Uk
 
 #ifndef ListNode_h
@@ -70,5 +70,10 @@ void delete(List *list, int obj);
 void insert(List *list, unsigned int local, int number);
 
 
+/************************************************
+ *功能：逆置
+ *参数：链表指针，起始位置，结束位置
+ ************************************************/
+void reverseList(List *list, uint m, uint n);
 
 #endif /* ListNode_h */

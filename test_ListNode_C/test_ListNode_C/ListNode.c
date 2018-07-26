@@ -155,6 +155,56 @@ void insert(List *list, unsigned int local, int number)
 
 
 
+/************************************************
+ *功能：逆置
+ *参数：链表指针，起始位置，结束位置
+ ************************************************/
+void reverseList(List *list, uint m, uint n)
+{
+    if (m <= n || m >= list->count || n >= list->count) {
+        printf("local invalid\n");
+    }
+    
+    // 获取 [m,n]区间的前一个节点p, 后一个节点q
+    uint i = 0, j = 0;
+    Node *p = list->head;
+    Node *q = list->head;
+    
+    // 定义[m,n]区间的头结点s、尾节点t
+    Node *s = NULL;
+    Node *t = NULL;
+    
+    while (j <= n) {
+        
+        if (i < m - 1) {
+            i++;
+            p = p->next;
+        }
+        
+        Node *next = q->next;
+        if (j >= m) {
+            
+            Node * tmp = q;
+            tmp->next = s;
+            s = tmp;
+            
+            if (j == m) {
+                t = tmp;
+            }
+        }
+        
+        q = next;
+        j++;
+    }
+    
+    p->next = s;
+    t->next = q;
+    
+}
+
+
+
+
 
 
 
