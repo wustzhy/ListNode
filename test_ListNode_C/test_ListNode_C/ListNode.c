@@ -68,7 +68,6 @@ int search(List *list, int obj)
     while (p != NULL) {
         
         if (p->data == obj) {
-            list->count--;
             return index;
         }
         p = p->next;
@@ -92,6 +91,7 @@ void delete(List *list, int obj)
     
     if (flag == 0) { // 删的是 头结点
         list->head = list->head->next;
+        list->count--;
         return;
     }
     
@@ -103,6 +103,7 @@ void delete(List *list, int obj)
             p->next = q->next;
             q->next = NULL;
             free(q);
+            list->count--;
             break;
         }
         p = q;
