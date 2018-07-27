@@ -46,10 +46,17 @@ int main(int argc, const char * argv[]) {
     delete(list, 11);
 //    not exist
     
-    reverseList(list, 3, 6);//第3、4、5、6个节点逆置 [3,6]
-    printList(list);
-//    0->10->9->5->6->7->8->4->3->2->1->NULL  count:11
+//    reverseList(list, 3, 6);//第3、4、5、6个节点逆置 [3,6]
+//    printList(list);
+////    0->10->9->5->6->7->8->4->3->2->1->NULL  count:11
     
+//    reverseList(list, 0, 3);
+//    printList(list);
+////    8->9->10->0->7->6->5->4->3->2->1->NULL  count:11
+    
+    reverseList(list, 0, list->count-1);
+    printList(list);
+//    1->2->3->4->5->6->7->8->9->10->0->NULL  count:11
     
     return 0;
 }

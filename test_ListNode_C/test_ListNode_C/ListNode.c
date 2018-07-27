@@ -176,7 +176,7 @@ void reverseList(List *list, uint m, uint n)
     
     while (j <= n) {
         
-        if (i < m - 1) {
+        if (m > 0 && i < m - 1) {
             i++;
             p = p->next;
         }
@@ -184,12 +184,11 @@ void reverseList(List *list, uint m, uint n)
         Node *next = q->next;
         if (j >= m) {
             
-            Node * tmp = q;
-            tmp->next = s;
-            s = tmp;
+            q->next = s;
+            s = q;
             
             if (j == m) {
-                t = tmp;
+                t = q;
             }
         }
         
@@ -197,7 +196,11 @@ void reverseList(List *list, uint m, uint n)
         j++;
     }
     
-    p->next = s;
+    if (m == 0) {
+        list->head = s;
+    }else {
+        p->next = s;
+    }
     t->next = q;
     
 }
